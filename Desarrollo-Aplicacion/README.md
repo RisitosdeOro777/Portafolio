@@ -54,7 +54,7 @@ npm start
 ## Actividades académicas
 - Regresión Lineal: código Python, README, métricas reproducibles y limitaciones.
 - SIVARLAND/Laberinto: código Python/Pygame y documentación de DFS, BFS, niveles y controles.
-- AI Challenge: documentación inicial; falta recuperar e incorporar el archivo fuente y las evidencias originales.
+- AI Challenge: código Python y README con metodología, métricas medidas y limitaciones; las capturas de las gráficas deben añadirse si se requieren como evidencia visual.
 - Hotspots Comerciales: estructura de documentación preparada; faltan los materiales fuente.
 
 ## Estado de verificación
