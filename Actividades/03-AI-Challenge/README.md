@@ -56,4 +56,4 @@ pip install -r requirements.txt
 python Actividades/03-AI-Challenge/actividad_kmeans_knn.py
 ```
 
-El script abre tres gráficas: K-Means con 3 grupos, K-Means con 4 grupos y comparación de exactitud de KNN. Para ejecutarlo en un entorno sin interfaz gráfica, configura un backend no interactivo de Matplotlib; en ese modo las ventanas no se muestran.
+El script guarda tres gráficas PNG en la carpeta `evidencias/` junto al archivo fuente: `kmeans-3-grupos.png`, `kmeans-4-grupos.png` y `comparacion-knn.png`. También intenta abrirlas en pantalla; para ejecutarlo en un entorno sin interfaz gráfica, configura un backend no interactivo de Matplotlib.
