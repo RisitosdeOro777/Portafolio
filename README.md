@@ -79,6 +79,7 @@ Importa el repositorio personal desde GitHub en Vercel, deja que detecte Next.js
 - app/page.tsx: página principal y formulario.
 - app/globals.css: identidad visual, estilos y responsive.
 - app/actividades/[slug]/page.tsx: fichas detalladas de las cuatro actividades.
+- app/desarrollo/page.tsx: documentación del frontend, backend, endpoint REST y despliegue.
 - app/api/contact/route.ts: endpoint REST de contacto.
 - app/hotspots/page.tsx: página anterior de presentación de Hotspots.
 - Actividades/: códigos fuente y documentación de los ejercicios.
