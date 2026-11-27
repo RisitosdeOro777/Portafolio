@@ -39,3 +39,16 @@ Importa este repositorio en Vercel y utiliza la configuración predeterminada de
 
 ## Aprendizajes
 Este portafolio reúne aprendizajes de desarrollo web, herramientas digitales, trabajo en equipo, investigación y presentación de proyectos académicos.
+
+## Dirección visual y fotografía
+La interfaz utiliza una dirección de arte editorial inspirada en revistas de moda y cultura musical: composición asimétrica, tipografía de gran formato, contraste alto, fondos oscuros, acentos rojos y secciones con paletas propias. La sección musical presenta a Milo J, Álvaro Díaz, Bad Bunny, Travis Scott y Tyler, The Creator.
+
+Las fotografías se cargan desde Wikimedia Commons y sus páginas de origen se indican aquí para conservar la atribución:
+- A$AP Rocky — [Gabriel Hutchinson / WikiPortraits](https://commons.wikimedia.org/wiki/File:A$AP_Rocky_at_the_2025_Cannes_Film_Festival_(cropped_3x4).jpg), CC BY-SA 4.0.
+- Milo J — [Chulian8](https://commons.wikimedia.org/wiki/File:MiloJ.jpg), CC0 1.0.
+- Álvaro Díaz — [Canela Music](https://commons.wikimedia.org/wiki/File:Álvaro_Díaz_2023.jpg), CC BY 3.0.
+- Bad Bunny — [Telemedellín+](https://commons.wikimedia.org/wiki/File:Bad_Bunny.jpg), CC BY 3.0.
+- Travis Scott — [Philip Romano](https://commons.wikimedia.org/wiki/File:TravisScott-byPhilipRomano.jpg), CC BY-SA 4.0.
+- Tyler, The Creator — fotografía de Wikimedia Commons; revisar la página de origen y conservar su atribución si se sustituye la imagen.
+
+Las fotografías de terceros son referencias visuales de artistas y no implican asociación ni patrocinio. La fotografía personal de Hugo queda pendiente de incorporar cuando se adjunte el archivo definitivo.
