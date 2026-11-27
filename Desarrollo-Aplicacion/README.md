@@ -16,6 +16,7 @@ El repositorio contiene un portafolio personal y académico implementado con Nex
 - app/globals.css: identidad editorial, tipografía, fondo gráfico inspirado en una bandera, componentes y reglas responsive.
 - app/layout.tsx: layout raíz y metadatos.
 - app/actividades/[slug]/page.tsx: páginas estáticas generadas para Regresión lineal, Laberinto, AI Challenge y Hotspots.
+- app/desarrollo/page.tsx: documentación visible de la construcción de la aplicación y de su API REST.
 - app/hotspots/page.tsx: página de Hotspots conservada como ruta informativa.
 - public/images/hugo-portrait.webp: retrato personal de la portada.
 
