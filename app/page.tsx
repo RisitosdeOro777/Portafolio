@@ -67,7 +67,7 @@ export default function Home() {
             <img src="https://commons.wikimedia.org/wiki/Special:FilePath/A%24AP_Rocky_at_the_2025_Cannes_Film_Festival_(cropped_3x4).jpg" alt="A$AP Rocky en una fotografía editorial del Festival de Cannes 2025"/>
             <div className="portrait-overlay"/>
             <div className="portrait-stamp">A$AP<br/>WORLD</div>
-            <div className="portrait-caption"><span>VISUAL INSPIRATION / 001</span><strong>FASHION<br/>MEETS MUSIC.</strong></div>
+            <div className="portrait-caption"><span>VISUAL INSPIRATION / 001 · PHOTO: GABRIEL HUTCHINSON / WIKIPORTRAITS · CC BY-SA 4.0</span><strong>FASHION<br/>MEETS MUSIC.</strong></div>
             <span className="portrait-vertical">A CREATIVE POINT OF VIEW — 2026</span>
           </div>
         </div>
