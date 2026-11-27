@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 const projects = [
   { number: "01", name: "SORTLYSCAN", type: "PROTOTIPO ACADÉMICO · TRABAJO EN EQUIPO", description: "Propuesta tecnológica orientada al reciclaje: un mapa para localizar centros, consultar los materiales que reciben y filtrar la información. Presentado en EXPO Logros y EXPO TECH. Mi aporte estuvo en la investigación y organización de información, además del trabajo colaborativo.", tools: ["HTML", "CSS", "JavaScript", "Leaflet"], status: "EXPO LOGROS / EXPO TECH", href: null },
@@ -31,7 +31,7 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSending(true);
     setStatus("");
