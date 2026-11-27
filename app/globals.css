@@ -107,3 +107,6 @@
 .contact-form button:focus-visible,.nav a:focus-visible,.activity-actions a:focus-visible{outline:2px solid var(--red);outline-offset:4px}
 @media(max-width:760px){.hero:before{top:130px;right:-35%;width:125vw;height:440px;opacity:.15}.hero:after{top:135px;right:27%;width:42vw;height:170px;opacity:.17}.hero-specialty{font-size:8px;line-height:1.8}.activity-topbar{height:66px;padding:0 6%;gap:12px}.activity-topbar .availability{display:none}.activity-back{font-size:8px}.activity-hero{padding:75px 7% 55px}.activity-index{right:7%;top:45px}.activity-hero h1{font-size:clamp(48px,13vw,76px);margin:35px 0 25px}.activity-intro{font-size:13px}.activity-content{padding:10px 7% 65px}.activity-block{padding:32px 0}.activity-actions{flex-direction:column;align-items:stretch}.activity-actions a{text-align:center}.activity-page footer{flex-wrap:wrap;font-size:7px}.experience-entry p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-marquee span{animation:none}}
+
+.experience-link{padding:25px 0}.experience-link a{display:inline-block;border:1px solid #51413c;padding:15px 18px;color:#eee;font:9px var(--mono);letter-spacing:.8px;transition:.2s}.experience-link a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+@media(max-width:760px){.experience-link a{font-size:8px;line-height:1.7}}
