@@ -103,6 +103,7 @@ export default function Home() {
         <div className="section-title-row"><h2>LEARNING<br/><em>BY DOING.</em></h2><p>Mi experiencia hasta ahora se ha construido principalmente a través de proyectos académicos, trabajo en equipo y retos prácticos.</p></div>
         <div className="experience-entry"><span>PROYECTO COLABORATIVO · EXPO LOGROS / EXPO TECH</span><h3>SORTLYSCAN — INVESTIGACIÓN Y ORGANIZACIÓN</h3><p>Formé parte del equipo que desarrolló una propuesta tecnológica para facilitar la búsqueda de centros de reciclaje. Mi participación se enfocó en investigar y organizar información útil para el proyecto, además de colaborar con el equipo durante su desarrollo y presentación.</p><div className="tags"><span>TRABAJO EN EQUIPO</span><span>INVESTIGACIÓN</span><span>ORGANIZACIÓN DE INFORMACIÓN</span></div></div>
         <div className="experience-entry"><span>FORMACIÓN · 10 SEMANAS</span><h3>RETOS DE PROGRAMACIÓN Y MACHINE LEARNING</h3><p>Durante el período trabajé en ejercicios de regresión lineal, búsqueda en laberintos, clasificación y agrupamiento con Machine Learning, además de una actividad de análisis comercial. Las fichas de cada actividad explican el alcance y los materiales disponibles.</p></div>
+        <div className="experience-link"><a href="/desarrollo">VER CÓMO DESARROLLÉ ESTE PORTAFOLIO Y SU API ↗</a></div>
       </section>
 
       <section className="section projects" id="projects">
