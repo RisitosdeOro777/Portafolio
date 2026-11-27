@@ -10,7 +10,11 @@ export async function POST(request: Request) {
   let body: ContactPayload;
 
   try {
-    body = await request.json();
+    const parsed: unknown = await request.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return NextResponse.json({ message: "Envía un objeto JSON con nombre, correo y mensaje." }, { status: 400 });
+    }
+    body = parsed as ContactPayload;
   } catch {
     return NextResponse.json({ message: "La solicitud no contiene un JSON válido." }, { status: 400 });
   }
