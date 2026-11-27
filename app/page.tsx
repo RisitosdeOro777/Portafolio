@@ -3,9 +3,11 @@
 import { useState } from "react";
 
 const projects = [
-  { number: "01", name: "AI CHALLENGE", type: "MACHINE LEARNING · PROYECTO GRUPAL", description: "Exploración de K-Means y KNN mediante un conjunto de datos sintéticos de estudiantes. El ejercicio analiza agrupaciones y compara modelos de clasificación.", tools: ["Python", "NumPy", "Pandas", "Matplotlib", "Scikit-learn"], status: "Documentación en progreso" },
-  { number: "02", name: "SORTLYSCAN", type: "PROTOTIPO ACADÉMICO · TRABAJO EN EQUIPO", description: "Propuesta tecnológica orientada al reciclaje: un mapa para localizar centros, consultar los materiales que reciben y filtrar la información. Presentado en EXPO Logros y EXPO TECH. Mi aporte estuvo en la investigación y organización de información.", tools: ["HTML", "CSS", "JavaScript", "Leaflet"], status: "EXPO LOGROS / EXPO TECH" },
-  { number: "03", name: "REGRESIÓN LINEAL", type: "ACTIVIDAD DEL CURSO", description: "Actividad pendiente de integrar con su planteamiento, código, visualizaciones y resultados.", tools: ["Por incorporar"], status: "Próximamente" }
+  { number: "01", name: "SORTLYSCAN", type: "PROTOTIPO ACADÉMICO · TRABAJO EN EQUIPO", description: "Propuesta tecnológica orientada al reciclaje: un mapa para localizar centros, consultar los materiales que reciben y filtrar la información. Presentado en EXPO Logros y EXPO TECH. Mi aporte estuvo en la investigación y organización de información, además del trabajo colaborativo.", tools: ["HTML", "CSS", "JavaScript", "Leaflet"], status: "EXPO LOGROS / EXPO TECH", href: null },
+  { number: "02", name: "REGRESIÓN LINEAL", type: "ACTIVIDAD ACADÉMICA · MACHINE LEARNING", description: "Modelo que explora la relación entre horas de estudio y puntaje. El script prepara 30 registros, entrena una regresión lineal, calcula métricas y permite probar predicciones dentro del rango observado.", tools: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"], status: "CÓDIGO + DOCUMENTACIÓN", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/01-Regresion-Lineal" },
+  { number: "03", name: "SIVARLAND / LABERINTO", type: "ACTIVIDAD ACADÉMICA · ÁRBOLES Y BÚSQUEDA", description: "Juego interactivo desarrollado con Pygame. Genera laberintos con DFS y calcula rutas con BFS; incluye tres niveles, controles y seguimiento del recorrido.", tools: ["Python", "Pygame", "DFS", "BFS"], status: "CÓDIGO + DOCUMENTACIÓN", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/02-Laberinto" },
+  { number: "04", name: "AI CHALLENGE", type: "MACHINE LEARNING · PROYECTO GRUPAL", description: "Actividad grupal descrita en torno a K-Means y KNN con datos sintéticos de estudiantes. La carpeta contiene actualmente la documentación inicial; el archivo fuente y las evidencias todavía deben incorporarse.", tools: ["Python", "K-Means", "KNN", "Scikit-learn"], status: "MATERIAL POR COMPLETAR", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/03-AI-Challenge" },
+  { number: "05", name: "HOTSPOTS COMERCIALES", type: "ACTIVIDAD ACADÉMICA", description: "Actividad registrada en el portafolio. La descripción técnica, los datos, los resultados y los archivos originales se añadirán cuando se incorporen los materiales de trabajo.", tools: ["Documentación pendiente"], status: "MATERIAL POR COMPLETAR", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/04-Hotspots-Comerciales" }
 ];
 
 const artists = [
@@ -47,7 +49,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a className="brand" href="#home">HC<span>.</span></a>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">☰</button>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={menuOpen}>☰</button>
         <nav className={menuOpen ? "nav open" : "nav"}>
           {[["01","Inicio","#home"],["02","Sobre mí","#about"],["03","Proyectos","#projects"],["04","Soundtrack","#soundtrack"],["05","Habilidades","#skills"],["06","Formación","#education"],["07","Contacto","#contact"]].map(([n,label,href]) => <a key={n} href={href} onClick={() => setMenuOpen(false)}><small>{n}</small>{label}</a>)}
         </nav>
@@ -64,10 +66,10 @@ export default function Home() {
             <div className="hero-bottom"><p>Aprender. Crear. Evolucionar.<br/>Construyendo mi propio camino.</p><a className="circle-link" href="#about" aria-label="Conocer más">↘</a></div>
           </div>
           <div className="hero-portrait">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/A%24AP_Rocky_at_the_2025_Cannes_Film_Festival_(cropped_3x4).jpg" alt="A$AP Rocky en una fotografía editorial del Festival de Cannes 2025"/>
+            <img src="/images/hugo-portrait.webp" alt="Retrato personal de Hugo Cantor con traje negro y corbata roja" fetchPriority="high"/>
             <div className="portrait-overlay"/>
-            <div className="portrait-stamp">A$AP<br/>WORLD</div>
-            <div className="portrait-caption"><span>VISUAL INSPIRATION / 001 · PHOTO: GABRIEL HUTCHINSON / WIKIPORTRAITS · CC BY-SA 4.0</span><strong>FASHION<br/>MEETS MUSIC.</strong></div>
+            <div className="portrait-stamp">HUGO<br/>CANTOR</div>
+            <div className="portrait-caption"><span>PERSONAL PROFILE / EL SALVADOR · 2026</span><strong>MY OWN<br/>POINT OF VIEW.</strong></div>
             <span className="portrait-vertical">A CREATIVE POINT OF VIEW — 2026</span>
           </div>
         </div>
@@ -92,8 +94,8 @@ export default function Home() {
       <section className="section projects" id="projects">
         <div className="section-head"><span>02 / SELECTED WORK</span><span>PROYECTOS Y EXPERIENCIA</span></div>
         <div className="section-title-row"><h2>IDEAS INTO<br/><em>PROJECTS.</em></h2><p>Una selección de experiencias académicas, ejercicios y proyectos en los que he participado y aprendido.</p></div>
-        <div className="project-list">{projects.map(project => <article className="project" key={project.number}><div className="project-number">{project.number}</div><div className="project-main"><p className="eyebrow">{project.type}</p><h3>{project.name}</h3><p>{project.description}</p><div className="tags">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></div><div className="project-status">{project.status}<span>↗</span></div></article>)}</div>
-        <div className="note">Laberinto y Hotspots Comerciales se incorporarán cuando añadamos sus archivos y evidencias.</div>
+        <div className="project-list">{projects.map(project => <article className="project" key={project.number}><div className="project-number">{project.number}</div><div className="project-main"><p className="eyebrow">{project.type}</p><h3>{project.name}</h3><p>{project.description}</p><div className="tags">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></div><div className="project-status"><span className="project-status-label">{project.status}</span>{project.href ? <a href={project.href} target="_blank" rel="noreferrer" aria-label="Ver archivos del proyecto en GitHub">↗</a> : <span aria-hidden="true">✳</span>}</div></article>)}</div>
+        <p className="note">Los enlaces abren los archivos disponibles en GitHub. AI Challenge y Hotspots aún requieren sus archivos originales y evidencias; no se presentan resultados que no hayan sido verificados.</p>
       </section>
 
       <section className="soundtrack-intro" id="soundtrack">
