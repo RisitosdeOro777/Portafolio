@@ -42,9 +42,9 @@ npm start
 | Regresión Lineal | Código Python y README con metodología, métricas y limitaciones |
 | SIVARLAND / Laberinto | Código Python/Pygame y README con DFS, BFS, niveles y controles |
 | AI Challenge | Código Python, README con metodología, métricas de ejecución y generación automática de gráficas PNG en `evidencias/` |
-| Hotspots Comerciales | README de planificación; faltan los materiales originales para documentarlo |
+| Hotspots Comerciales | Paquete original ZIP conservado en la raíz, página editorial propia y README con estado de verificación |
 
-Los enlaces a los archivos están en la sección Proyectos del sitio. No se presentan métricas ni capturas como verificadas si no se han ejecutado o proporcionado.
+El paquete `Hotspots_UNO_La_Libertad.zip` se conserva en la raíz del repositorio y se presenta desde la ruta `/hotspots`. Su contenido interno y su ejecución aún no han podido validarse, por lo que no se publican métricas ni instrucciones de inicio supuestas. Los enlaces a las actividades están disponibles en la sección Proyectos del sitio.
 
 ## Contacto
 Correo: [unurevenger@gmail.com](mailto:unurevenger@gmail.com)  
