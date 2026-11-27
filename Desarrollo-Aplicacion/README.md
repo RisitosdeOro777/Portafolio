@@ -59,3 +59,7 @@ npm start
 
 ## Estado de verificación
 Se revisaron los archivos del repositorio y se actualizaron la página, los estilos, la documentación y el recurso de imagen. Aún deben ejecutarse `npm run build`, pruebas manuales en escritorio/móvil y pruebas de API. No se afirma que el despliegue de Vercel o el envío de correo desde servidor estén configurados.
+
+
+## Página de Hotspots Comerciales
+La ruta `app/hotspots/page.tsx` presenta la Actividad 4 con una composición editorial coherente con la página principal. Incluye acceso al archivo ZIP original conservado en la raíz del repositorio y una indicación explícita del estado de validación. Los estilos específicos están al final de `app/globals.css`. No se inventan resultados ni comandos de ejecución: el contenido interno del ZIP aún debe inspeccionarse.
