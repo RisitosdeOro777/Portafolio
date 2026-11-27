@@ -110,3 +110,7 @@
 
 .experience-link{padding:25px 0}.experience-link a{display:inline-block;border:1px solid #51413c;padding:15px 18px;color:#eee;font:9px var(--mono);letter-spacing:.8px;transition:.2s}.experience-link a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
 @media(max-width:760px){.experience-link a{font-size:8px;line-height:1.7}}
+
+/* Ajustes solicitados: sin bandera y mostrar la foto de Alvaro */
+.hero:before,.hero:after{display:none!important}
+.alvaro-theme .artist-photo{display:block!important}
