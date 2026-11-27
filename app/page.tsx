@@ -36,12 +36,10 @@ export default function Home() {
     setSending(true);
     setStatus("");
     try {
-      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
-      const data = await response.json();
-      setStatus(data.message || (response.ok ? "Mensaje enviado." : "No se pudo enviar el mensaje."));
-      if (response.ok) setForm({ name: "", email: "", message: "" });
-    } catch {
-      setStatus("No fue posible conectar con el servidor. Inténtalo más tarde.");
+      const subject = encodeURIComponent("Mensaje desde el portafolio — " + form.name.trim());
+      const body = encodeURIComponent("Nombre: " + form.name.trim() + String.fromCharCode(10) + "Correo: " + form.email.trim() + String.fromCharCode(10, 10) + "Mensaje:" + String.fromCharCode(10) + form.message.trim());
+      window.location.href = "mailto:unurevenger@gmail.com?subject=" + subject + "&body=" + body;
+      setStatus("Se abrió tu aplicación de correo con el mensaje preparado. Revísalo y envíalo desde allí.");
     } finally { setSending(false); }
   }
 
