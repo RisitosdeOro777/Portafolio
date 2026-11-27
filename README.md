@@ -1,54 +1,67 @@
-# Hugo Cantor — Portfolio
+# Hugo Cantor — Portafolio personal y académico
 
-Portafolio personal y académico de Hugo Cantor, con una identidad visual editorial en blanco, negro y rojo. Presenta información personal, formación, habilidades, experiencia académica y proyectos.
+Portafolio de Hugo Cantor. Reúne su presentación personal, formación, habilidades y experiencias académicas con una dirección visual editorial inspirada en moda y cultura musical.
 
 ## Tecnologías
-- Next.js (App Router)
-- React
+- Next.js 15 (App Router)
+- React 19
 - TypeScript
 - CSS
-- API Route de Next.js para validar el formulario de contacto
+- Python para actividades académicas documentadas por separado
 
 ## Ejecutar localmente
-1. Instala Node.js (versión LTS).
-2. Clona el repositorio:
-   `git clone https://github.com/RisitosdeOro777/Portafolio.git`
-3. Entra a la carpeta e instala dependencias:
-   `npm install`
-4. Inicia el servidor:
-   `npm run dev`
-5. Abre http://localhost:3000.
+Requisitos: Node.js LTS y npm.
 
-## Contenido actual
-- Perfil y presentación personal.
-- Formación académica y certificaciones TOEIC / MOS.
-- Habilidades técnicas y personales.
-- SortlyScan: prototipo académico presentado en EXPO Logros y EXPO TECH.
-- AI Challenge: actividad grupal de K-Means y KNN.
-- Formulario con validación de datos.
+```bash
+git clone https://github.com/RisitosdeOro777/Portafolio.git
+cd Portafolio
+npm install
+npm run dev
+```
 
-## Pendiente
-- Incorporar las evidencias, gráficas y resultados ejecutados del AI Challenge.
-- Añadir los archivos de las actividades restantes cuando estén disponibles.
-- Configurar un proveedor de correo para que el formulario envíe mensajes realmente.
-- Añadir fotografías personales y recursos visuales definitivos.
-- Verificar el despliegue y configurar el dominio público en Vercel.
+Abre http://localhost:3000. Para comprobar una compilación de producción:
 
-## Despliegue
-Importa este repositorio en Vercel y utiliza la configuración predeterminada de Next.js. Añade las variables de entorno del proveedor de correo cuando se implemente el envío real del formulario.
+```bash
+npm run build
+npm start
+```
 
-## Aprendizajes
-Este portafolio reúne aprendizajes de desarrollo web, herramientas digitales, trabajo en equipo, investigación y presentación de proyectos académicos.
+## Secciones del sitio
+- Inicio y perfil personal, con retrato propio sin fondo.
+- Sobre mí: intereses, objetivos académicos y proyección profesional.
+- Proyectos y experiencia académica.
+- Soundtrack: referencias musicales y dirección visual.
+- Habilidades y herramientas.
+- Formación: TOEIC Listening & Reading, TOEIC Speaking & Writing, MOS Excel, MOS Excel Expert y Empower Youth.
+- Contacto: formulario que prepara un correo mediante la aplicación de correo del visitante, además de un enlace directo.
 
-## Dirección visual y fotografía
-La interfaz utiliza una dirección de arte editorial inspirada en revistas de moda y cultura musical: composición asimétrica, tipografía de gran formato, contraste alto, fondos oscuros, acentos rojos y secciones con paletas propias. La sección musical presenta a Milo J, Álvaro Díaz, Bad Bunny, Travis Scott y Tyler, The Creator.
+## Proyectos y actividades
+| Proyecto | Material disponible |
+|---|---|
+| SortlyScan | Descripción del prototipo y participación en EXPO Logros / EXPO TECH |
+| Regresión Lineal | Código Python y README con metodología, métricas y limitaciones |
+| SIVARLAND / Laberinto | Código Python/Pygame y README con DFS, BFS, niveles y controles |
+| AI Challenge | README inicial; falta añadir el archivo fuente original y evidencias |
+| Hotspots Comerciales | README de planificación; faltan los materiales originales para documentarlo |
 
-Las fotografías se cargan desde Wikimedia Commons y sus páginas de origen se indican aquí para conservar la atribución:
+Los enlaces a los archivos están en la sección Proyectos del sitio. No se presentan métricas ni capturas como verificadas si no se han ejecutado o proporcionado.
+
+## Contacto
+Correo: [unurevenger@gmail.com](mailto:unurevenger@gmail.com)  
+GitHub: [RisitosdeOro777](https://github.com/RisitosdeOro777)
+
+El formulario abre el cliente de correo del visitante con el mensaje preparado. No utiliza todavía un servicio de envío desde el servidor. La ruta `POST /api/contact` valida el JSON, pero devuelve HTTP 503 hasta que se configure un proveedor de correo y sus variables de entorno.
+
+## Despliegue en Vercel
+El proyecto está preparado para importarse en Vercel como aplicación Next.js. El enlace público debe añadirse aquí después de completar el despliegue y verificarlo; no se declara una URL de producción que aún no se haya confirmado.
+
+## Dirección visual y recursos
+La interfaz combina fondos oscuros, tipografía editorial de gran formato, blanco y negro, acentos rojos, composiciones asimétricas y secciones musicales con paletas propias. Las imágenes de artistas se cargan desde Wikimedia Commons; las atribuciones conocidas se mantienen en el código y en esta documentación:
 - A$AP Rocky — [Gabriel Hutchinson / WikiPortraits](https://commons.wikimedia.org/wiki/File:A$AP_Rocky_at_the_2025_Cannes_Film_Festival_(cropped_3x4).jpg), CC BY-SA 4.0.
 - Milo J — [Chulian8](https://commons.wikimedia.org/wiki/File:MiloJ.jpg), CC0 1.0.
 - Álvaro Díaz — [Canela Music](https://commons.wikimedia.org/wiki/File:Álvaro_Díaz_2023.jpg), CC BY 3.0.
 - Bad Bunny — [Telemedellín+](https://commons.wikimedia.org/wiki/File:Bad_Bunny.jpg), CC BY 3.0.
 - Travis Scott — [Philip Romano](https://commons.wikimedia.org/wiki/File:TravisScott-byPhilipRomano.jpg), CC BY-SA 4.0.
-- Tyler, The Creator — fotografía de Wikimedia Commons; revisar la página de origen y conservar su atribución si se sustituye la imagen.
+- Tyler, The Creator — se mantiene la fotografía alojada en Wikimedia Commons; verificar la página de archivo para añadir la atribución y licencia exactas.
 
-Las fotografías de terceros son referencias visuales de artistas y no implican asociación ni patrocinio. La fotografía personal de Hugo queda pendiente de incorporar cuando se adjunte el archivo definitivo.
+El retrato personal se guarda localmente en `public/images/hugo-portrait.webp` y se utiliza en la portada. Las fotografías de terceros son referencias editoriales y no implican asociación ni patrocinio.
