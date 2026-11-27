@@ -41,7 +41,7 @@ npm start
 | SortlyScan | Descripción del prototipo y participación en EXPO Logros / EXPO TECH |
 | Regresión Lineal | Código Python y README con metodología, métricas y limitaciones |
 | SIVARLAND / Laberinto | Código Python/Pygame y README con DFS, BFS, niveles y controles |
-| AI Challenge | Código Python, README con metodología, métricas de la ejecución y limitaciones |
+| AI Challenge | Código Python, README con metodología, métricas de ejecución y generación automática de gráficas PNG en `evidencias/` |
 | Hotspots Comerciales | README de planificación; faltan los materiales originales para documentarlo |
 
 Los enlaces a los archivos están en la sección Proyectos del sitio. No se presentan métricas ni capturas como verificadas si no se han ejecutado o proporcionado.
