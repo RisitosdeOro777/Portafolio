@@ -1,9 +1,13 @@
 # AI Challenge - K-Means y KNN
-# Equipo: (poner nombres aqui)
+# Actividad grupal de aprendizaje automático
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+EVIDENCIAS = Path(__file__).parent / "evidencias"
+EVIDENCIAS.mkdir(exist_ok=True)
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
@@ -48,6 +52,8 @@ plt.scatter(df["horas"], df["asistencia"], c=df["grupo3"])
 plt.xlabel("Horas de estudio")
 plt.ylabel("Asistencia")
 plt.title("K-Means con 3 grupos")
+plt.tight_layout()
+plt.savefig(EVIDENCIAS / "kmeans-3-grupos.png", dpi=160, bbox_inches="tight")
 plt.show()
 
 modelo4 = KMeans(n_clusters=4, n_init=10, random_state=42)
@@ -60,6 +66,8 @@ plt.scatter(df["horas"], df["asistencia"], c=df["grupo4"])
 plt.xlabel("Horas de estudio")
 plt.ylabel("Asistencia")
 plt.title("K-Means con 4 grupos")
+plt.tight_layout()
+plt.savefig(EVIDENCIAS / "kmeans-4-grupos.png", dpi=160, bbox_inches="tight")
 plt.show()
 
 # 3. KNN: predecir aprobación sin usar la nota como variable
@@ -106,6 +114,8 @@ plt.xlabel("k")
 plt.ylabel("Exactitud")
 plt.title("Exactitud de KNN segun k")
 plt.legend()
+plt.tight_layout()
+plt.savefig(EVIDENCIAS / "comparacion-knn.png", dpi=160, bbox_inches="tight")
 plt.show()
 
 mejor_k = valores_k[exactitud_con.index(max(exactitud_con))]
