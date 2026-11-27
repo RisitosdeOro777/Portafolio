@@ -49,4 +49,4 @@ python regresionlineal.py
 Introduce un número de horas entre 1 y 10 para observar la predicción y la gráfica.
 
 ## Evidencias
-El propio programa genera la visualización al ejecutarse. No se adjuntó una captura de pantalla ni una salida de ejecución como evidencia, por lo que deben añadirse después de ejecutar la actividad en el entorno correspondiente.
+El programa genera la visualización y guarda automáticamente una copia en evidencias/regresion-lineal.png al ejecutar una predicción válida. La captura de la ejecución completa todavía debe añadirse después de correr la actividad en el entorno correspondiente.

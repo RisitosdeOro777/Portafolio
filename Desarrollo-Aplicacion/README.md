@@ -1,65 +1,60 @@
 # Desarrollo de la aplicación web
 
 ## Descripción general
-El repositorio contiene un portafolio personal y académico implementado con Next.js App Router, React y TypeScript. La página principal se encuentra en `app/page.tsx`, los estilos en `app/globals.css`, los metadatos en `app/layout.tsx` y el retrato personal optimizado en `public/images/hugo-portrait.webp`.
+El repositorio contiene un portafolio personal y académico implementado con Next.js App Router, React y TypeScript. La página principal organiza el perfil, la experiencia, los proyectos, habilidades, formación y contacto. Cada una de las cuatro actividades obligatorias tiene una ficha de documentación propia.
 
 ## Tecnologías
-- Next.js 15.5.4
-- React y React DOM 19.1.1
+- Next.js 15.5.29 y React 19.1.1
 - TypeScript 5.9
-- CSS
+- CSS responsive
+- API REST de Next.js
+- Resend (envío de correo cuando se configuran las variables privadas)
 - Python para las actividades académicas independientes
 
 ## Organización del frontend
-- `app/page.tsx`: navegación responsive, presentación, perfil, proyectos, soundtrack, habilidades, formación y contacto.
-- `app/globals.css`: identidad visual, tipografía, composición, estados interactivos y reglas responsive.
-- `app/layout.tsx`: estructura raíz y metadatos.
-- `public/images/hugo-portrait.webp`: retrato propio con canal alfa/transparencia, utilizado en la portada.
+- app/page.tsx: navegación, hero, sobre mí, experiencia, proyectos, soundtrack, habilidades, formación y formulario.
+- app/globals.css: identidad editorial, tipografía, fondo gráfico inspirado en una bandera, componentes y reglas responsive.
+- app/layout.tsx: layout raíz y metadatos.
+- app/actividades/[slug]/page.tsx: páginas estáticas generadas para Regresión lineal, Laberinto, AI Challenge y Hotspots.
+- app/desarrollo/page.tsx: documentación visible de la construcción de la aplicación y de su API REST.
+- app/hotspots/page.tsx: página de Hotspots conservada como ruta informativa.
+- public/images/hugo-portrait.webp: retrato personal de la portada.
 
-## Secciones de la interfaz
-1. Inicio: presentación de Hugo y fotografía personal.
-2. Sobre mí: biografía, intereses y objetivos.
-3. Proyectos y experiencia: SortlyScan, Regresión Lineal, SIVARLAND/Laberinto, AI Challenge y Hotspots Comerciales. Los enlaces de actividades abren sus carpetas del repositorio.
-4. Soundtrack: paneles visuales de artistas que forman parte de los intereses musicales.
-5. Habilidades: conocimientos técnicos, herramientas y habilidades personales.
-6. Formación académica: TOEIC, certificaciones MOS y Empower Youth.
-7. Contacto: datos directos y formulario.
+## Componentes y experiencia
+La página utiliza componentes React para navegación móvil, listas de proyectos, tarjetas de habilidades, cronología académica y formulario controlado. Las fichas de actividades muestran problema, objetivo, metodología, resultados, notas sobre limitaciones, evidencias y enlaces a los archivos originales.
 
 ## Backend y API REST
-La ruta `POST /api/contact` se implementa en `app/api/contact/route.ts`. Recibe JSON con `name`, `email` y `message`, recorta espacios externos y valida:
-- `name`: entre 2 y 80 caracteres.
-- `email`: formato de correo válido y máximo 120 caracteres.
-- `message`: entre 10 y 2000 caracteres.
 
-Devuelve HTTP 400 ante JSON inválido o campos no válidos. Cuando los campos son válidos devuelve HTTP 503 con un mensaje que explica que todavía falta configurar el proveedor de correo. No se simula un envío exitoso y no hay una base de datos conectada.
+La ruta POST /api/contact recibe JSON con name, email y message. El servidor valida tipos y longitudes, valida el formato de correo y responde en JSON:
+- HTTP 400: cuerpo JSON inválido o campos que no cumplen las reglas.
+- HTTP 503: falta configurar el remitente o la clave del proveedor.
+- HTTP 502: el proveedor no pudo completar el envío.
+- HTTP 200: el proveedor confirmó el envío.
 
-## Comportamiento del formulario
-El formulario de la página principal valida nombre, correo y mensaje mediante atributos HTML. Al enviarse, construye un enlace `mailto:` con el destinatario `unurevenger@gmail.com`, el asunto y el contenido del mensaje. El navegador intenta abrir la aplicación de correo del visitante; la persona debe revisar y enviar el mensaje desde esa aplicación. Esto es una alternativa funcional sin exponer claves privadas, pero no sustituye un proveedor de correo del lado del servidor.
+Cuando se configuran RESEND_API_KEY y CONTACT_FROM, el endpoint envía el correo mediante Resend. CONTACT_TO permite cambiar el destinatario y por defecto utiliza el correo de contacto publicado. Las credenciales se guardan en .env.local o en las variables privadas del proyecto en Vercel, nunca en el código fuente.
+
+## Formulario de contacto
+El formulario de la página principal realiza una petición fetch a /api/contact mediante POST, muestra el mensaje JSON de éxito o error y limpia los campos cuando el envío se confirma. Si el servicio no está configurado, la interfaz muestra la razón y ofrece el correo directo como alternativa.
 
 ## Ejecución local
-Requisitos: Node.js LTS y npm.
 
-```bash
-npm install
-npm run dev
-```
+    npm install
+    npm run dev
 
-Abre `http://localhost:3000`. Para una compilación de producción:
+Abre http://localhost:3000. Para producción:
 
-```bash
-npm run build
-npm start
-```
+    npm run typecheck
+    npm run build
+    npm start
 
-## Actividades académicas
-- Regresión Lineal: código Python, README, métricas reproducibles y limitaciones.
-- SIVARLAND/Laberinto: código Python/Pygame y documentación de DFS, BFS, niveles y controles.
-- AI Challenge: código Python que guarda las tres gráficas generadas en `Actividades/03-AI-Challenge/evidencias/`, y README con metodología, métricas medidas y limitaciones.
-- Hotspots Comerciales: estructura de documentación preparada; faltan los materiales fuente.
+## Variables de entorno
+
+Copia .env.example como .env.local y completa:
+- RESEND_API_KEY
+- CONTACT_FROM
+- CONTACT_TO (opcional)
+
+El dominio remitente debe estar verificado en Resend. Configura las mismas variables en Vercel antes de publicar. No se debe compartir ni subir la clave privada.
 
 ## Estado de verificación
-Se revisaron los archivos del repositorio y se actualizaron la página, los estilos, la documentación y el recurso de imagen. Aún deben ejecutarse `npm run build`, pruebas manuales en escritorio/móvil y pruebas de API. No se afirma que el despliegue de Vercel o el envío de correo desde servidor estén configurados.
-
-
-## Página de Hotspots Comerciales
-La ruta `app/hotspots/page.tsx` presenta la Actividad 4 con una composición editorial coherente con la página principal. Incluye acceso al archivo ZIP original conservado en la raíz del repositorio y una indicación explícita del estado de validación. Los estilos específicos están al final de `app/globals.css`. No se inventan resultados ni comandos de ejecución: el contenido interno del ZIP aún debe inspeccionarse.
+La estructura y el código fuente están documentados. El envío de correo depende de las credenciales privadas y de un remitente verificado. Las capturas de las actividades deben generarse desde sus programas originales y añadirse a sus carpetas de evidencias. El despliegue público de Vercel y las pruebas finales en dispositivos móviles deben verificarse después de configurar el proyecto.

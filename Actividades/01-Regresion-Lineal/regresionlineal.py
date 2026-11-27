@@ -10,6 +10,7 @@ Original file is located at
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
@@ -74,6 +75,12 @@ try:
         plt.ylabel("Score")
         plt.title("Regresión Lineal")
         plt.legend()
+        carpeta_evidencias = Path(__file__).parent / "evidencias"
+        carpeta_evidencias.mkdir(exist_ok=True)
+        ruta_grafica = carpeta_evidencias / "regresion-lineal.png"
+        plt.tight_layout()
+        plt.savefig(ruta_grafica, dpi=160, bbox_inches="tight")
+        print(f"Gráfica guardada en: {ruta_grafica}")
         plt.show()
 
 except ValueError:

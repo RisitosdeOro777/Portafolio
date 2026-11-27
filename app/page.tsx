@@ -4,10 +4,10 @@ import { useState, type FormEvent } from "react";
 
 const projects = [
   { number: "01", name: "SORTLYSCAN", type: "PROTOTIPO ACADÉMICO · TRABAJO EN EQUIPO", description: "Propuesta tecnológica orientada al reciclaje: un mapa para localizar centros, consultar los materiales que reciben y filtrar la información. Presentado en EXPO Logros y EXPO TECH. Mi aporte estuvo en la investigación y organización de información, además del trabajo colaborativo.", tools: ["HTML", "CSS", "JavaScript", "Leaflet"], status: "EXPO LOGROS / EXPO TECH", href: null },
-  { number: "02", name: "REGRESIÓN LINEAL", type: "ACTIVIDAD ACADÉMICA · MACHINE LEARNING", description: "Modelo que explora la relación entre horas de estudio y puntaje. El script prepara 30 registros, entrena una regresión lineal, calcula métricas y permite probar predicciones dentro del rango observado.", tools: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"], status: "CÓDIGO + DOCUMENTACIÓN", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/01-Regresion-Lineal" },
-  { number: "03", name: "SIVARLAND / LABERINTO", type: "ACTIVIDAD ACADÉMICA · ÁRBOLES Y BÚSQUEDA", description: "Juego interactivo desarrollado con Pygame. Genera laberintos con DFS y calcula rutas con BFS; incluye tres niveles, controles y seguimiento del recorrido.", tools: ["Python", "Pygame", "DFS", "BFS"], status: "CÓDIGO + DOCUMENTACIÓN", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/02-Laberinto" },
-  { number: "04", name: "AI CHALLENGE", type: "MACHINE LEARNING · PROYECTO GRUPAL", description: "Actividad grupal con 500 registros sintéticos. Se aplican K-Means con 3 y 4 grupos y KNN con comparación de siete valores de k, con y sin normalización. La mejor exactitud observada fue 91.2% en el conjunto de prueba.", tools: ["Python", "K-Means", "KNN", "Scikit-learn"], status: "CÓDIGO + RESULTADOS", href: "https://github.com/RisitosdeOro777/Portafolio/tree/main/Actividades/03-AI-Challenge" },
-  { number: "05", name: "HOTSPOTS COMERCIALES", type: "ACTIVIDAD ACADÉMICA · ANÁLISIS COMERCIAL", description: "Entrega de la actividad sobre hotspots comerciales en UNO La Libertad. El paquete original se conserva en el repositorio y cuenta con una página propia para consultar el material disponible y su estado de documentación.", tools: ["Python", "Datos del proyecto", "Análisis comercial"], status: "PAQUETE ORIGINAL DISPONIBLE", href: "/hotspots" }
+  { number: "02", name: "REGRESIÓN LINEAL", type: "ACTIVIDAD ACADÉMICA · MACHINE LEARNING", description: "Modelo que explora la relación entre horas de estudio y puntaje. El script prepara 30 registros, entrena una regresión lineal, calcula métricas y permite probar predicciones dentro del rango observado.", tools: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"], status: "CÓDIGO + DOCUMENTACIÓN", href: "/actividades/regresion-lineal" },
+  { number: "03", name: "SIVARLAND / LABERINTO", type: "ACTIVIDAD ACADÉMICA · ÁRBOLES Y BÚSQUEDA", description: "Juego interactivo desarrollado con Pygame. Genera laberintos con DFS y calcula rutas con BFS; incluye tres niveles, controles y seguimiento del recorrido.", tools: ["Python", "Pygame", "DFS", "BFS"], status: "CÓDIGO + DOCUMENTACIÓN", href: "/actividades/laberinto" },
+  { number: "04", name: "AI CHALLENGE", type: "MACHINE LEARNING · PROYECTO GRUPAL", description: "Actividad grupal con 500 registros sintéticos. Se aplican K-Means con 3 y 4 grupos y KNN con comparación de siete valores de k, con y sin normalización. La mejor exactitud observada fue 91.2% en el conjunto de prueba.", tools: ["Python", "K-Means", "KNN", "Scikit-learn"], status: "CÓDIGO + RESULTADOS", href: "/actividades/ai-challenge" },
+  { number: "05", name: "HOTSPOTS COMERCIALES", type: "ACTIVIDAD ACADÉMICA · ANÁLISIS COMERCIAL", description: "Entrega de la actividad sobre hotspots comerciales en UNO La Libertad. El paquete original se conserva en el repositorio y cuenta con una página propia para consultar el material disponible y su estado de documentación.", tools: ["Python", "Datos del proyecto", "Análisis comercial"], status: "PAQUETE ORIGINAL DISPONIBLE", href: "/actividades/hotspots" }
 ];
 
 const artists = [
@@ -19,10 +19,10 @@ const artists = [
 ];
 
 const skills = [
-  ["DEVELOPMENT", "HTML", "CSS", "JavaScript", "Python (básico)", "Java (básico)", "Leaflet"],
-  ["DATA & DATABASES", "Firebase", "MySQL", "K-Means", "KNN"],
-  ["TOOLS", "Visual Studio Code", "Figma", "GitHub", "Canva", "Microsoft Word", "Excel", "PowerPoint"],
-  ["AI TOOLS", "ChatGPT", "Gemini", "Copilot", "Claude"]
+  ["LENGUAJES Y WEB", "HTML", "CSS", "JavaScript", "Python (básico)", "Java (básico)", "Leaflet"],
+  ["DATOS Y BASES DE DATOS", "Firebase", "MySQL", "Pandas", "NumPy", "K-Means", "KNN"],
+  ["HERRAMIENTAS", "Visual Studio Code", "Figma", "Git", "GitHub", "Canva", "Microsoft Word", "Excel", "PowerPoint"],
+  ["IA Y PRODUCTIVIDAD", "ChatGPT", "Gemini", "Copilot", "Claude"]
 ];
 
 export default function Home() {
@@ -36,11 +36,20 @@ export default function Home() {
     setSending(true);
     setStatus("");
     try {
-      const subject = encodeURIComponent("Mensaje desde el portafolio — " + form.name.trim());
-      const body = encodeURIComponent("Nombre: " + form.name.trim() + String.fromCharCode(10) + "Correo: " + form.email.trim() + String.fromCharCode(10, 10) + "Mensaje:" + String.fromCharCode(10) + form.message.trim());
-      window.location.href = "mailto:unurevenger@gmail.com?subject=" + subject + "&body=" + body;
-      setStatus("Se abrió tu aplicación de correo con el mensaje preparado. Revísalo y envíalo desde allí.");
-    } finally { setSending(false); }
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || "No se pudo enviar el mensaje.");
+      setStatus(result.message || "¡Mensaje enviado! Gracias por escribirme.");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Ocurrió un error. Inténtalo de nuevo o escríbeme directamente.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -49,7 +58,7 @@ export default function Home() {
         <a className="brand" href="#home">HC<span>.</span></a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={menuOpen}>☰</button>
         <nav className={menuOpen ? "nav open" : "nav"}>
-          {[["01","Inicio","#home"],["02","Sobre mí","#about"],["03","Proyectos","#projects"],["04","Soundtrack","#soundtrack"],["05","Habilidades","#skills"],["06","Formación","#education"],["07","Contacto","#contact"]].map(([n,label,href]) => <a key={n} href={href} onClick={() => setMenuOpen(false)}><small>{n}</small>{label}</a>)}
+          {[["01","Inicio","#home"],["02","Sobre mí","#about"],["03","Experiencia","#experience"],["04","Proyectos","#projects"],["05","Soundtrack","#soundtrack"],["06","Habilidades","#skills"],["07","Formación","#education"],["08","Contacto","#contact"]].map(([n,label,href]) => <a key={n} href={href} onClick={() => setMenuOpen(false)}><small>{n}</small>{label}</a>)}
         </nav>
         <span className="availability"><i /> PORTAFOLIO 2026</span>
       </header>
@@ -59,7 +68,7 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy">
             <p className="eyebrow"><span>CREATIVE MINDSET</span> / PERSONAL ARCHIVE</p>
-            <p className="hero-kicker">BUILDING MY OWN PATH.</p>
+            <p className="hero-kicker">BUILDING MY OWN PATH.</p><p className="hero-specialty">ESTUDIANTE · TECNOLOGÍA · ANÁLISIS · CREATIVIDAD</p>
             <h1>HUGO<br/><em>CANTOR</em><span className="red-dot">.</span></h1>
             <div className="hero-bottom"><p>Aprender. Crear. Evolucionar.<br/>Construyendo mi propio camino.</p><a className="circle-link" href="#about" aria-label="Conocer más">↘</a></div>
           </div>
@@ -89,11 +98,19 @@ export default function Home() {
         <div className="facts"><div><strong>01</strong><span>APRENDIZAJE<br/>CONTINUO</span></div><div><strong>02</strong><span>MENTALIDAD<br/>ADAPTABLE</span></div><div><strong>03</strong><span>VISIÓN<br/>INTERNACIONAL</span></div></div>
       </section>
 
+      <section className="section experience" id="experience">
+        <div className="section-head"><span>02 / EXPERIENCE</span><span>EXPERIENCIA Y PARTICIPACIÓN</span></div>
+        <div className="section-title-row"><h2>LEARNING<br/><em>BY DOING.</em></h2><p>Mi experiencia hasta ahora se ha construido principalmente a través de proyectos académicos, trabajo en equipo y retos prácticos.</p></div>
+        <div className="experience-entry"><span>PROYECTO COLABORATIVO · EXPO LOGROS / EXPO TECH</span><h3>SORTLYSCAN — INVESTIGACIÓN Y ORGANIZACIÓN</h3><p>Formé parte del equipo que desarrolló una propuesta tecnológica para facilitar la búsqueda de centros de reciclaje. Mi participación se enfocó en investigar y organizar información útil para el proyecto, además de colaborar con el equipo durante su desarrollo y presentación.</p><div className="tags"><span>TRABAJO EN EQUIPO</span><span>INVESTIGACIÓN</span><span>ORGANIZACIÓN DE INFORMACIÓN</span></div></div>
+        <div className="experience-entry"><span>FORMACIÓN · 10 SEMANAS</span><h3>RETOS DE PROGRAMACIÓN Y MACHINE LEARNING</h3><p>Durante el período trabajé en ejercicios de regresión lineal, búsqueda en laberintos, clasificación y agrupamiento con Machine Learning, además de una actividad de análisis comercial. Las fichas de cada actividad explican el alcance y los materiales disponibles.</p></div>
+        <div className="experience-link"><a href="/desarrollo">VER CÓMO DESARROLLÉ ESTE PORTAFOLIO Y SU API ↗</a></div>
+      </section>
+
       <section className="section projects" id="projects">
-        <div className="section-head"><span>02 / SELECTED WORK</span><span>PROYECTOS Y EXPERIENCIA</span></div>
+        <div className="section-head"><span>03 / SELECTED WORK</span><span>PROYECTOS ACADÉMICOS</span></div>
         <div className="section-title-row"><h2>IDEAS INTO<br/><em>PROJECTS.</em></h2><p>Una selección de experiencias académicas, ejercicios y proyectos en los que he participado y aprendido.</p></div>
         <div className="project-list">{projects.map(project => <article className="project" key={project.number}><div className="project-number">{project.number}</div><div className="project-main"><p className="eyebrow">{project.type}</p><h3>{project.name}</h3><p>{project.description}</p><div className="tags">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></div><div className="project-status"><span className="project-status-label">{project.status}</span>{project.href ? <a href={project.href} target="_blank" rel="noreferrer" aria-label="Ver archivos del proyecto en GitHub">↗</a> : <span aria-hidden="true">✳</span>}</div></article>)}</div>
-        <p className="note">Los enlaces permiten consultar cada actividad y sus archivos. El paquete de Hotspots Comerciales se conserva en su formato original; su ejecución y resultados aún deben validarse.</p>
+        <p className="note">Abre cada ficha para conocer el problema, objetivo, método, resultados disponibles, código fuente y evidencias. Cuando todavía falta una captura o una validación, se indica de forma transparente.</p>
       </section>
 
       <section className="soundtrack-intro" id="soundtrack">
@@ -114,14 +131,14 @@ export default function Home() {
       </section>
 
       <section className="section skills" id="skills">
-        <div className="section-head"><span>03 / WHAT I KNOW</span><span>HABILIDADES</span></div>
+        <div className="section-head"><span>04 / WHAT I KNOW</span><span>HABILIDADES</span></div>
         <div className="section-title-row"><h2>TOOLS OF<br/><em>MY TRADE.</em></h2><p>Conocimientos y herramientas que he utilizado durante mi formación. Los niveles básicos se indican de forma explícita.</p></div>
         <div className="skill-grid">{skills.map(([title,...items]) => <div className="skill-card" key={title}><p>{title}</p><div>{items.map(item => <span key={item}>{item}</span>)}</div></div>)}</div>
         <div className="soft-skills"><span>ADAPTABILIDAD</span><span>APRENDIZAJE RÁPIDO</span><span>CURIOSIDAD</span><span>PENSAMIENTO CRÍTICO</span><span>SUPERACIÓN PERSONAL</span><span>COMUNICACIÓN</span></div>
       </section>
 
       <section className="section education" id="education">
-        <div className="section-head"><span>04 / EDUCATION</span><span>FORMACIÓN ACADÉMICA</span></div>
+        <div className="section-head"><span>05 / EDUCATION</span><span>FORMACIÓN ACADÉMICA</span></div>
         <h2>ALWAYS<br/><em>IN PROGRESS.</em></h2>
         <div className="timeline">
           <div className="timeline-item"><span>EN CURSO</span><div><h3>Fundación Frech</h3><p>Formación académica · Estudios en etapa final</p></div><b>01</b></div>
@@ -134,11 +151,11 @@ export default function Home() {
       </section>
 
       <section className="contact" id="contact">
-        <div className="section-head"><span>05 / GET IN TOUCH</span><span>CONTACTO</span></div>
+        <div className="section-head"><span>06 / GET IN TOUCH</span><span>CONTACTO</span></div>
         <div className="contact-layout"><div><p className="eyebrow">HABLEMOS</p><h2>LET'S<br/><em>CONNECT.</em></h2><p className="contact-intro">¿Tienes una idea, una oportunidad o simplemente quieres conversar? Puedes escribirme.</p><a className="email-link" href="mailto:unurevenger@gmail.com">UNUREVENGER@GMAIL.COM ↗</a><a className="github-link" href="https://github.com/RisitosdeOro777" target="_blank" rel="noreferrer">GITHUB / RISITOSDEORO777 ↗</a></div>
           <form className="contact-form" onSubmit={handleSubmit}>
-            <label>Nombre<input required minLength={2} maxLength={80} value={form.name} onChange={e => setForm({...form,name:e.target.value})} placeholder="Tu nombre"/></label>
-            <label>Correo electrónico<input required type="email" maxLength={120} value={form.email} onChange={e => setForm({...form,email:e.target.value})} placeholder="nombre@correo.com"/></label>
+            <label>Nombre<input required minLength={2} maxLength={80} autoComplete="name" value={form.name} onChange={e => setForm({...form,name:e.target.value})} placeholder="Tu nombre"/></label>
+            <label>Correo electrónico<input required type="email" maxLength={120} autoComplete="email" value={form.email} onChange={e => setForm({...form,email:e.target.value})} placeholder="nombre@correo.com"/></label>
             <label>Mensaje<textarea required minLength={10} maxLength={2000} rows={4} value={form.message} onChange={e => setForm({...form,message:e.target.value})} placeholder="Escribe tu mensaje..."/></label>
             <button disabled={sending} type="submit">{sending ? "ENVIANDO..." : "ENVIAR MENSAJE ↗"}</button>{status && <p className="form-status" role="status">{status}</p>}
           </form>
